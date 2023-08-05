@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <report id='action_report_inventario_excel'
+            string='Inventario (.xlsx)'
+            model='ipe_base.report.inventario'
+            name='report_inventario.xlsx'
+            file='inventario'
+            print_report_name="('Inventario - %s' % (object.name))"
+            report_type='excel'
+    />
+    <report id='report_inventario_xlsx'
+            string='Inventario (.xlsx)'
+            model='ipe_base.inventario'
+            name='ipe_base.report_inventario_xlsx'
+            file='inventario'
+            print_report_name="('Inventario - %s' % (object.name))"
+            report_type='xlsx'
+    />
+
+</odoo>

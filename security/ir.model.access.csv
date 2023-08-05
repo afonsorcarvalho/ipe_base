@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ipe_base_inventario,ipe_base.inventario,model_ipe_base_inventario,,1,1,1,0
+access_ipe_base_amostras,ipe_base.amostras,model_ipe_base_amostras,,1,1,1,1
+access_ipe_base_especies_lines,ipe_base.especies_lines,model_ipe_base_especies_lines,,1,1,1,1
+access_ipe_base_especies,ipe_base.especies,model_ipe_base_especies,,1,1,1,1
+access_ipe_base_tipo_material_lenhoso,ipe_base.tipo_material_lenhoso,model_ipe_base_tipo_material_lenhoso,,1,1,1,1

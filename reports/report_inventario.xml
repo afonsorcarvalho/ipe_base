@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright 2019 JG Soluções Inteligentes.
+  License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).-->
+<odoo>
+    <record id="report_inventario" model="ir.ui.view">
+        <field name="name">ipe_base.report.inventario</field>
+        <field name="model">ipe_base.report.inventario</field>
+        <field name="inherit_id" ref="excel_import_export.xlsx_report_view"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='criteria']" position="inside">
+                <group>
+                    <field name="inventario"/>
+                </group>
+                <group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+ 
+
+    <record id="action_report_inventario" model="ir.actions.act_window">
+        <field name="name">Inventario Report</field>
+        <field name="res_model">ipe_base.report.inventario</field>
+       
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">
+            {'template_domain': [('res_model', '=', 'ipe_base.report.inventario'),
+                                 ('fname', '=', 'report_inventario.xlsx'),
+                                 ('gname', '=', False)]}
+        </field>
+    </record>
+
+    <menuitem id="menu_report_inventario"
+        parent="excel_import_export.menu_excel_import_export"
+        action="action_report_inventario"
+        sequence="20"/>
+
+</odoo>

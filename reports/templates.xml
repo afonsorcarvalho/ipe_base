@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright 2019 Ecosoft Co., Ltd.
+  License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).-->
+<odoo>
+
+    <record id="report_inventario_template" model="xlsx.template">
+        <field name="res_model">ipe_base.report.inventario</field>
+        <field name="fname">report_inventario.xlsx</field>
+        <field name="name">Report Inventario Template</field>
+        <field name="description">Report Inventario Tempalte</field>
+        <field name="input_instruction">
+            {
+                '__EXPORT__': {
+                    1: {
+                            'results': {
+                            'B5': 'especie_id.name${value or ""}#{style=text}',
+                            'F5': 'classe_diametrica${value or ""}#{style=text}',
+                            'C5': 'ft${value or 0}#{style=number}@{sum}',
+                            'D5': 'ft_ha${value or 0}#{style=number}@{sum}',
+                            'E5': 'volume_ha${value or 0}#{style=number}@{sum}',
+                            
+
+                            
+                        },
+                    },
+                },
+            }
+        </field>
+    </record>
+
+  <function model="xlsx.template" name="load_xlsx_template">
+        <value eval="[ref('report_inventario_template')]"/>
+    </function>
+
+</odoo>

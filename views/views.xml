@@ -1,0 +1,224 @@
+<odoo>
+  <data>
+    <record id="ipe_base_inventario_list" model="ir.ui.view">
+      <field name="name">ipe_base.inventario.list</field>
+      <field name="model">ipe_base.inventario</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+          <field name="area_total"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="ipe_base_inventario_view_form" model="ir.ui.view">
+      <field name="name">ipe_base.inventario.form</field>
+      <field name="model">ipe_base.inventario</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+            <!-- <button name="action_calcula_volume" type="object" string="Atualizar" confirm="True"/> -->
+          </header>
+          <sheet>
+            <group>
+              <field name="name" string="Nome do Inventário"/>
+              <field name="description"/>
+            </group>
+            <group>
+              <group>
+                <field name="area_total" />
+              </group>
+            </group>
+            <notebook>
+              <page string="Amostras">
+
+                <field name="amostras"/>
+
+              </page>
+            </notebook>
+          </sheet>
+
+          <div class="oe_chatter">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="message_ids" widget="mail_thread"/>
+            <field name="message_follower_ids" widget="mail_followers" />
+            <field name="activity_ids" widget="mail_activity" />
+            <field name="message_ids" widget="mail_thread"
+                options="{'post_refresh': 'recipients', 'open_attachments': True}" />
+
+        </div>
+        </form>
+      </field>
+    </record>
+    
+    <record id="ipe_base_amostras_view_form" model="ir.ui.view">
+      <field name="name">ipe_base.amostras.form</field>
+      <field name="model">ipe_base.amostras</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="area_amostra" string="Área Amostral(m)"/>
+              </group>
+            </group>
+            <notebook>
+              <page string="Espécies encontradas">
+                <field name="especies_lines"/>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="ipe_base_amostras_view_list" model="ir.ui.view">
+      <field name="name">ipe_base.amostras.list</field>
+      <field name="model">ipe_base.amostras</field>
+      <field name="arch" type="xml">
+        <tree string="">
+          <field name="sequence" widget="handle"/>
+          <field name="name"/>
+          <field name="area_amostra"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="ipe_base_especies_lines_view_pivot" model="ir.ui.view">
+      <field name="name">ipe_base.especies_lines.view.pivot</field>
+      <field name="model">ipe_base.especies_lines</field>
+      <field name="arch" type="xml">
+        <pivot string="" disable_linking="false">
+          <field name="classe_diametrica" type="col"/>
+          <field name="tipo_material_lenhoso" type="col"/>
+          <field name="volume_lenha" type="measure"/>
+          <field name="volume_estaca" type="measure"/>
+          <field name="volume_torete" type="measure"/>
+          <field name="volume_tora" type="measure"/>
+          <field name="volume_residuos_lenhoso" type="measure"/>
+          <field name="volume_material_lenhoso" type="measure"/>
+          <field name="sequence" type="row"></field>
+          
+
+          <field name="ft" type="measure"/>
+          <field name="ft_ha" type="measure"/>
+          <field name="volume_ha" type="measure"/>
+          
+          <field name="especie_id" type="row"/>
+          <field name="ft_ha"/>
+          
+          <field name="scientific_name"/>
+          <field name="dap"/>
+          <field name="h"/>
+          <field name="fator_de_forma"/>
+          <field name="volume"/>
+
+        </pivot>
+      </field>
+    </record>
+
+    <record id="ipe_base_especies_lines_view_list" model="ir.ui.view">
+      <field name="name">ipe_base.especies_lines.list</field>
+      <field name="model">ipe_base.especies_lines</field>
+      <field name="arch" type="xml">
+
+        <tree string="Espécies" editable="bottom">
+          <field name="sequence" widget="handle"/>
+          <field name="especie_id"/>
+          <field name="scientific_name"/>
+          <field name="dap"/>
+          <field name="h"/>
+          <field name="fator_de_forma"/>
+          <field name="volume"/>
+        </tree>
+      </field>
+    </record>
+
+     <record id="ipe_base_especies_lines_view_form" model="ir.ui.view">
+      <field name="name">ipe_base.especies_lines.form</field>
+      <field name="model">ipe_base.especies_lines</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <sheet>
+            <group>
+              <field name="especie_id"/>
+              <field name="scientific_name"/>
+              <field name="dap"/>
+              <field name="h"/>
+              <field name="fator_de_forma"/>
+              <field name="volume"/>
+              <field name="volume_ha"/>
+              <field name="classe_diametrica"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="ipe_base_especies_view_list" model="ir.ui.view">
+      <field name="name">ipe_base.especies.list</field>
+      <field name="model">ipe_base.especies</field>
+      <field name="arch" type="xml">
+
+        <tree string="Espécies" editable="bottom">
+       
+          <field name="name"/>
+          <field name="scientific_name"/>
+          <field name="tipo"/>
+          <field name="fator_de_forma"/>
+          <field name="serve_para_estaca"/>
+        </tree>
+      </field>
+    </record>
+   
+     <record id="ipe_base_tipo_material_lenhoso_view_list" model="ir.ui.view">
+      <field name="name">ipe_base.tipo_material_lenhoso.list</field>
+      <field name="model">ipe_base.tipo_material_lenhoso</field>
+      <field name="arch" type="xml">
+
+        <tree string="Tipos de Material Lenhoso" editable="bottom">
+       
+          <field name="name"/>
+          <field name="max_dap"/>
+          <field name="min_dap"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="ipe_base.inventario_action_window">
+      <field name="name">Inventarios</field>
+      <field name="res_model">ipe_base.inventario</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="ipe_base.especies_lines_action_window">
+      <field name="name">Amostras</field>
+      <field name="res_model">ipe_base.especies_lines</field>
+      <field name="view_mode">tree,pivot</field>
+    </record>
+    <record model="ir.actions.act_window" id="ipe_base.tipo_material_lenhoso_action_window">
+      <field name="name">Tipos Material Lenhoso</field>
+      <field name="res_model">ipe_base.tipo_material_lenhoso</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="ipe_base.especies_action_window">
+      <field name="name">Espécies</field>
+      <field name="res_model">ipe_base.especies</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="ipe_base.menu_inventarios" name="Inventários" />
+    <menuitem id="ipe_base.menu_inventario" name="Inventário" parent="ipe_base.menu_inventarios" />
+
+    <menuitem name="Inventarios" id="ipe_base.menu_inventario_view" parent="ipe_base.menu_inventarios" action="ipe_base.inventario_action_window" />
+    <menuitem name="Especies" id="ipe_base.menu_especies_view" parent="ipe_base.menu_inventarios" action="ipe_base.especies_action_window"/>
+    <!-- <menuitem name="Amostras" id="ipe_base.menu_amostras_lst" parent="ipe_base.menu_inventarios" action="ipe_base.especies_lines_action_window"/> -->
+    <menuitem name="Tipo Material Lenhoso" id="ipe_base.menu_tipo_material_lenhoso" parent="ipe_base.menu_inventarios" action="ipe_base.tipo_material_lenhoso_action_window"/>
+     
+  </data>
+</odoo>
